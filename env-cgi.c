@@ -132,10 +132,12 @@ main ()
     }
     printf ("</table>");
     free (env_vars);
+    //REQUEST_METHOD environment variable
+    printf("The environment variable REQUEST_METHOD is %s\n",getenv("REQUEST_METHOD"));       
     //readout stdin file - otherwise error when data is posted...
     fflush(stdout);
     char ch;
     while(read(STDIN_FILENO,&ch,1))
-        write(STDOUT_FILENO,&ch,1);
+        write(STDOUT_FILENO,&ch,1);        
     return 0;
 }
