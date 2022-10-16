@@ -1,4 +1,5 @@
 /* Show the CGI (Common Gateway Interface) environment variables */
+ #include <unistd.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -131,5 +132,10 @@ main ()
     }
     printf ("</table>");
     free (env_vars);
+    //readout stdin file - otherwise error when data is posted...
+    fflush(stdout);
+    char ch;
+    while(read(STDIN_FILENO,&ch,1))
+        write(STDOUT_FILENO,&ch,1);
     return 0;
 }
